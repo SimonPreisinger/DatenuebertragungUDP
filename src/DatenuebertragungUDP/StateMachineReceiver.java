@@ -1,16 +1,16 @@
 package DatenuebertragungUDP;
 
 
-public class StateMachine {
+public class StateMachineReceiver {
 	
 
 	// all states for this FSM
 	enum State {
-		WAIT_FOR_CALL_FROM_ABOVE, WAIT_FOR_ACK, WAIT_FOR_CALL_FROM_BELOW
+		WAIT_FOR_CALL_FROM_BELOW, WAIT_FOR_ACK
 	};
 	// all messages/conditions which can occur
 	enum Msg {
-		rcvpkt, snpkt, start_timer, stop_timer	}
+		rcvpkt, snpkt, timeout, start_timer, stop_timer	}
 	// current state of the FSM	
 	private State currentState;
 	// 2D array defining all transitions that can occur
@@ -19,12 +19,12 @@ public class StateMachine {
 	/**
 	 * constructor
 	 */
-	public StateMachine(){
-		currentState = State.WAIT_FOR_CALL_FROM_ABOVE;
+	public StateMachineReceiver(){
+		currentState = State.WAIT_FOR_CALL_FROM_BELOW;
 		// define all valid state transitions for our state machine
 		// (undefined transitions will be ignored)
 		transition = new Transition[State.values().length] [Msg.values().length];
-		transition[State.WAIT_FOR_CALL_FROM_ABOVE.ordinal()] [Msg.snpkt.ordinal()] = new SndPkt();
+		transition[State.WAIT_FOR_CALL_FROM_BELOW.ordinal()][Msg.snpkt.ordinal()] = new SndPkt();
 		transition[State.WAIT_FOR_ACK.ordinal()] [Msg.start_timer.ordinal()] = new Rdt_Send();
 		System.out.println("INFO FSM constructed, current state: "+currentState);
 	}
@@ -55,7 +55,7 @@ public class StateMachine {
 		@Override
 		public State execute(Msg input) {
 			System.out.println("Wait for Ack!");
-			return State.WAIT_FOR_CALL_FROM_ABOVE;
+			return State.WAIT_FOR_CALL_FROM_BELOW;
 		}
 	}
 	
