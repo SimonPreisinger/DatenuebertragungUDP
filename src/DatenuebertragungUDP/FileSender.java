@@ -7,8 +7,13 @@ import java.util.Timer;
 
 import DatenuebertragungUDP.StateMachineSender.Msg;
 
+
+// DataOutputSteam verwenden
+// ByteArrayOutputStream.toByteArray() verwenden
+// Prüfsumme berechnen: CRC32 Interface Checksum
 public class FileSender {
 
+    static BufferedReader in = null;
 	public static void main(String[] args)throws IOException {
 		System.out.println("Hello FileSender benötigt Argumente HostName + Dateiname");
 		StateMachineSender stateMachine = (new StateMachineSender());
@@ -30,6 +35,17 @@ public class FileSender {
 	       String dateiName = (args[1]);
 	       System.out.print("address = " + address + "\n");
 	       System.out.print("dateiName = " + dateiName + "\n");
+	       
+	       // read sendFile
+	        try {
+	            in = new BufferedReader(new FileReader(dateiName));
+	        } catch (FileNotFoundException e) {
+	            System.err.println(dateiName + " existiert nicht");
+	        }
+	       
+	        SuperPaket superPaket = new SuperPaket(buf,0, buf.length, address, 4445, dateiName);
+
+
 	       DatagramPacket packet = new DatagramPacket(buf, buf.length, address, 4445);
 	       socket.send(packet);
 	    

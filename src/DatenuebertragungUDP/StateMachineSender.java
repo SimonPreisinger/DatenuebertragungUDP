@@ -55,7 +55,7 @@ public class StateMachineSender {
 		@Override
 		public State execute(Msg input) {
 			System.out.println("Wait for Ack!");
-			Paket paket = new Paket("Blume.png", "DesktopPC");
+			//SuperPaket superPaket = new SuperPaket("Blume.png", "DesktopPC");
 			
 			
 			return State.WAIT_FOR_ACK;
