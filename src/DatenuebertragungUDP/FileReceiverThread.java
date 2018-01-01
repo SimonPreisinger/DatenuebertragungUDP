@@ -42,6 +42,7 @@ public class FileReceiverThread extends Thread {
                 // receive request
                 DatagramPacket packet = new DatagramPacket(buf, buf.length);
                 socket.receive(packet);
+                System.out.println("packet.getData() "+ packet.getData());
 
                 // figure out response
                 String dString = null;
