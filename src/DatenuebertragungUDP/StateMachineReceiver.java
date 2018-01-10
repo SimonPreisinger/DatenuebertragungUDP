@@ -1,9 +1,21 @@
 package DatenuebertragungUDP;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 
-public class StateMachineReceiver {
+import DatenuebertragungUDP.StateMachineReceiver.Msg;
+
+public class StateMachineReceiver extends Thread {
 	
 
+    protected DatagramSocket socket = null;
+    protected BufferedReader in = null;
+    protected boolean moreQuotes = true;
 	// all states for this FSM
 	enum State {
 		WAIT_FOR_CALL_FROM_BELOW, WAIT_FOR_ACK
@@ -19,14 +31,26 @@ public class StateMachineReceiver {
 	/**
 	 * constructor
 	 */
-	public StateMachineReceiver(){
+    public StateMachineReceiver() throws IOException {
+	this("StateMachineReceiver");
+    }
+	public StateMachineReceiver(String name) throws IOException {
+        super(name);
+        socket = new DatagramSocket(4445);
+        
+
+		//stateMachine.processMsg(Msg.start_timer);
+
+
+
 		currentState = State.WAIT_FOR_CALL_FROM_BELOW;
 		// define all valid state transitions for our state machine
 		// (undefined transitions will be ignored)
 		transition = new Transition[State.values().length] [Msg.values().length];
 		transition[State.WAIT_FOR_CALL_FROM_BELOW.ordinal()][Msg.snpkt.ordinal()] = new SndPkt();
 		transition[State.WAIT_FOR_ACK.ordinal()] [Msg.start_timer.ordinal()] = new Rdt_Send();
-		System.out.println("INFO FSM constructed, current state: "+currentState);
+		System.out.println("Receiver constructed, current state: "+currentState);
+
 	}
 	
 	/**
@@ -55,6 +79,37 @@ public class StateMachineReceiver {
 		@Override
 		public State execute(Msg input) {
 			System.out.println("Wait for Ack!");
+	        while (moreQuotes) {
+	            try {
+	                byte[] buf = new byte[256];
+
+	                // receive request
+	                DatagramPacket packet = new DatagramPacket(buf, buf.length);
+	                socket.receive(packet);
+	                System.out.println("packet.getData() "+ packet.getData());
+
+	                // figure out response
+	                String dString = null;
+	                /*
+	                if (in == null)
+	                    dString = new Date().toString();
+	                else
+	                    dString = getNextQuote();
+
+	                buf = dString.getBytes();
+	*/
+		//	 send the response to the client at "address" and "port"
+	                InetAddress address = packet.getAddress();
+	                int port = packet.getPort();
+	                packet = new DatagramPacket(buf, buf.length, address, port);
+	                socket.send(packet);
+	                
+	            } catch (IOException e) {
+	                e.printStackTrace();
+			moreQuotes = true;
+	            }
+	        }
+	        socket.close();
 			return State.WAIT_FOR_CALL_FROM_BELOW;
 		}
 	}
@@ -66,4 +121,22 @@ public class StateMachineReceiver {
 			return State.WAIT_FOR_ACK;
 		}
 	}
+    public void run() {
+
+
+    }
+    protected String getNextQuote() {
+        String returnValue = null;
+        try {
+            if ((returnValue = in.readLine()) == null) {
+                in.close();
+		moreQuotes = false;
+                returnValue = "No more quotes. Goodbye.";
+            }
+        } catch (IOException e) {
+            returnValue = "IOException occurred in server.";
+        }
+        return returnValue;
+    }
 }
+
