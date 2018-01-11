@@ -15,17 +15,20 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.net.DatagramPacket;
-
+import DatenuebertragungUDP.StateMachineReceiver;
+import DatenuebertragungUDP.StateMachineReceiver.Msg;
 public class StateMachineSender {
 	
-	static int smallPacketSize = 2;
+	static int smallPacketSize = 2048;
 	static byte[] smallPacketsBuffer = new byte[smallPacketSize];
     static BufferedReader in = null;
     static String dateiName = "";
     static InetAddress address = null;
+    static DatagramSocket socket;
+    static byte[] fileBuffer;
 	// all states for this FSM
 	enum State {
-		WAIT_FOR_CALL_FROM_ABOVE, WAIT_FOR_ACK
+		SENDER_WAIT_FOR_CALL_FROM_ABOVE, SENDER_WAIT_FOR_ACK, SENDER_WAIT_FOR_PACKET, SENDER_SEND_PACKET
 	};
 	// all messages/conditions which can occur
 	enum Msg {
@@ -40,21 +43,40 @@ public class StateMachineSender {
 	 * @throws IOException  
 	 */
 	public StateMachineSender(String[] args) throws IOException {
-		currentState = State.WAIT_FOR_CALL_FROM_ABOVE;
+		currentState = State.SENDER_SEND_PACKET;
 		// define all valid state transitions for our state machine
 		// (undefined transitions will be ignored)
 		transition = new Transition[State.values().length] [Msg.values().length];
-		transition[State.WAIT_FOR_CALL_FROM_ABOVE.ordinal()] [Msg.snpkt.ordinal()] = new SndPkt();
-		transition[State.WAIT_FOR_ACK.ordinal()] [Msg.start_timer.ordinal()] = new Rdt_Send();
+		transition[State.SENDER_WAIT_FOR_CALL_FROM_ABOVE.ordinal()] [Msg.snpkt.ordinal()] = new SendPkt();
+		transition[State.SENDER_WAIT_FOR_ACK.ordinal()] [Msg.start_timer.ordinal()] = new ReadPkt();
+		transition[State.SENDER_SEND_PACKET.ordinal()] [Msg.snpkt.ordinal()] = new SendPkt();
+		transition[State.SENDER_WAIT_FOR_PACKET.ordinal()][Msg.rcvpkt.ordinal()] = new ReadPkt();
 		System.out.println("Sender constructed, current state: "+currentState);
-	    if (args.length != 2 ) {
-	         System.out.println("HostName oder Dateiname Argument fehlt in Run Configurations");
-	         return;
-	    }
-	    InetAddress address = InetAddress.getByName(args[0]);
-	    String dateiName = (args[1]);
+	    address = InetAddress.getByName(args[0]);
+	    dateiName = (args[1]);
 	    System.out.print("address = " + address + "\n");
 	    System.out.print("dateiName = " + dateiName + "\n");
+        // get a datagram socket
+	    socket = new DatagramSocket();
+		 // read sendFile
+	     try {
+	         FileReader reader = new FileReader(dateiName);;
+	     } catch (FileNotFoundException e) {
+	         System.err.println(dateiName + " existiert nicht");
+	     }	       	     
+	     
+	     Path filePath = Paths.get(dateiName);
+	     
+	     fileBuffer = Files.readAllBytes(filePath);
+	     FileInputStream inputStream = new FileInputStream(filePath.toString());
+	     File file = filePath.toFile();       
+	     
+	     DataInputStream dataIn = new DataInputStream(inputStream);
+	     dataIn.readFully(fileBuffer = new byte[(int) file.length()]);
+	     System.out.println("JPEG_example.jpg byte size: " + fileBuffer.length + " file lenght " + file.length());
+	
+	     processMsg(Msg.snpkt);
+		    
 	}
 	
 	/**
@@ -62,12 +84,11 @@ public class StateMachineSender {
 	 * @param input Message or condition that has occurred.
 	 */
 	public void processMsg(Msg input){
-		System.out.println("INFO Received "+input+" in state "+currentState);
 		Transition trans = transition[currentState.ordinal()][input.ordinal()];
 		if(trans != null){
 			currentState = trans.execute(input);
 		}
-		System.out.println("INFO State: "+currentState);
+		System.out.println("SENDER Received "+input+" in state "+currentState);
 	}
 	
 	/**
@@ -79,101 +100,56 @@ public class StateMachineSender {
 		abstract public State execute(Msg input);
 	}
 	
-	class SndPkt extends Transition {
+	class SendPkt extends Transition {
 		@Override
 		public State execute(Msg input) {
-			System.out.println("Wait for Ack!");
-			//SuperPaket superPaket = new SuperPaket("Blume.png", "DesktopPC");
+			System.out.println("SndPkt");
+		    // send request		   
+
+		     int c = 0;
+		     for (int i = 0; i<smallPacketSize; i++)
+		     {
+		     	smallPacketsBuffer[c] = fileBuffer[i];
+		            c++;
+		            if(i%smallPacketsBuffer.length-1==0){
+		    	        
+		                DatagramPacket packet = new DatagramPacket(smallPacketsBuffer, smallPacketSize, address, 4445);
+		                packet = packet;
+		                smallPacketsBuffer = new byte[smallPacketSize];
+		                c=0;
+		                try {
+							socket.send(packet);
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+		                System.out.println("sent a mini-packet");
+		            }
+		     }
 			
-			
-			return State.WAIT_FOR_ACK;
+
+			return State.SENDER_WAIT_FOR_PACKET;
 		}
 	}
 	
-	class Rdt_Send extends Transition {
+	class ReadPkt extends Transition {
 		@Override
 		public State execute(Msg input) {
-			System.out.println("rdt_send");
-			return State.WAIT_FOR_ACK;
-		}
-	}
-	
-	void Test(String[] args)throws IOException
-	{
-		//QuoteClient
-
-	
-	        // get a datagram socket
-	    DatagramSocket socket = new DatagramSocket();
-	
-	        // send request
-	    byte[] buf = new byte[256];
-
-	    
-	    // read sendFile
-	     try {
-	         in = new BufferedReader(new FileReader(dateiName));
-	     } catch (FileNotFoundException e) {
-	         System.err.println(dateiName + " existiert nicht");
-	     }	       	     
-	
-	     FileReader reader = new FileReader(dateiName);
-	
-	     Path filePath = Paths.get(dateiName);
-	     
-	     byte[] fileBuffer = Files.readAllBytes(filePath);
-	     FileInputStream inputStream = new FileInputStream(filePath.toString());
-	     File file = filePath.toFile();       
-	     
-	     DataInputStream dataIn = new DataInputStream(inputStream);
-	     dataIn.readFully(fileBuffer = new byte[(int) file.length()]);
-	
-	     //DataOutputStream dataOut = new DataOutputStream(new FileOutputStream("JPEG_example.jpg"));
-	     //dataOut.writeByte(1);
-	     /*
-	     ByteArrayOutputStream baos = new ByteArrayOutputStream(160);
-	     System.out.println("bOutputHeader " +baos.toByteArray());
-	     baos.write(address.getAddress(),0,address.getAddress().length);
-	     baos.toByteArray();
-	*/
-	     System.out.println("JPEG_example.jpg byte size: " + fileBuffer.length + " file lenght " + file.length());
-	     int c = 0;
-	     for (int i = 0; i<smallPacketSize; i++)
-	     {
-	     	smallPacketsBuffer[c] = fileBuffer[i];
-	            c++;
-	            if(i%smallPacketsBuffer.length-1==0){
-	    	        
-	                DatagramPacket packet = new DatagramPacket(smallPacketsBuffer, smallPacketSize, address, 4445);
-	                smallPacketsBuffer = new byte[smallPacketSize];
-	                c=0;
-	                socket.send(packet);
-	                System.out.println("sent a mini-packet");
-	            }
-	     }
-	     /*
-	     byte[] header = new byte[256];
-	     System.out.println("Inet4address " + address.getAddress().length);
-	     int lenght = address.getAddress().length;
-	     
-	
-	     DataInputStream dataIn = new DataInputStream(new FileInputStream("JPEG_example.jpg"));
-	
-	
-	
-	
-	     
-	    DatagramPacket packet = new DatagramPacket(bOutputHeader.toByteArray(), bOutputHeader.toByteArray().length, address, 4445);
-	    socket.send(packet);
-	*/    
-	     
-	     
 	        // get response
-	    DatagramPacket packet = new DatagramPacket(buf, buf.length);
-	    socket.receive(packet);
+			byte[] buf = new byte[256];	    
+		    DatagramPacket packet = new DatagramPacket(buf, buf.length);
+		    try {
+				socket.receive(packet);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	
 	    // display response
 	    String received = new String(packet.getData(), 0, packet.getLength());
 	    System.out.println("Quote of the Moment: " + received);
+			System.out.println("rdt_send");
+			return State.SENDER_SEND_PACKET;
+		}
 	}
 }
