@@ -47,6 +47,7 @@ public class StateMachineReceiver extends Thread {
 		transition[State.RECEIVER_SEND_PACKET.ordinal()][Msg.snpkt.ordinal()] = new SndPkt();
 		transition[State.RECEIVER_WAIT_FOR_PACKET.ordinal()][Msg.rcvpkt.ordinal()] = new Rdt_Send();
 		System.out.println("Receiver constructed, current state: "+currentState);
+		processMsg(Msg.rcvpkt);
 
 	}
 	
@@ -77,7 +78,7 @@ public class StateMachineReceiver extends Thread {
 			System.out.println("Receiver SendPkt");
 	        while (morePackages) {
 	            try {
-	                byte[] buf = new byte[256];
+	                byte[] buf = new byte[2048];
 
 	                // receive request
 	                DatagramPacket packet = new DatagramPacket(buf, buf.length);
@@ -111,8 +112,7 @@ public class StateMachineReceiver extends Thread {
 
 		                // receive request
 		                DatagramPacket packet = new DatagramPacket(buf, buf.length);
-		                if(packet.getAddress() != null)
-		                {
+
 		                	socket.receive(packet);
 		                	
 		                	System.out.println("packet.getData() "+ packet.getData());
@@ -123,7 +123,7 @@ public class StateMachineReceiver extends Thread {
 		                	packet = new DatagramPacket(buf, buf.length, address, port);
 		                	socket.send(packet);
 		                	
-		                }
+		                
 		                
 		            } catch (IOException e) {
 		                e.printStackTrace();

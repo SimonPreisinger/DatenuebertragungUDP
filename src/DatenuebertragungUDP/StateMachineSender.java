@@ -106,26 +106,19 @@ public class StateMachineSender {
 			System.out.println("SndPkt");
 		    // send request		   
 
-		     int c = 0;
-		     for (int i = 0; i<smallPacketSize; i++)
-		     {
-		     	smallPacketsBuffer[c] = fileBuffer[i];
-		            c++;
-		            if(i%smallPacketsBuffer.length-1==0){
-		    	        
-		                DatagramPacket packet = new DatagramPacket(smallPacketsBuffer, smallPacketSize, address, 4445);
-		                packet = packet;
-		                smallPacketsBuffer = new byte[smallPacketSize];
-		                c=0;
-		                try {
-							socket.send(packet);
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-		                System.out.println("sent a mini-packet");
-		            }
-		     }
+
+	            DatagramPacket packet = new DatagramPacket(smallPacketsBuffer, smallPacketSize, address, 4445);
+	            packet = packet;
+	            smallPacketsBuffer = new byte[smallPacketSize];
+	
+	            try {
+					socket.send(packet);
+					System.out.println("sent a mini-packet");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}            
+		    
 			
 
 			return State.SENDER_WAIT_FOR_PACKET;

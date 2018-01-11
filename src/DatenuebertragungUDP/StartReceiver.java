@@ -2,13 +2,13 @@ package DatenuebertragungUDP;
 
 import java.io.*;
 
-public class StartUDP {
+public class StartReceiver {
 	
 	public static void main(String[] args) throws IOException{
 
 
 		new StateMachineReceiver().start();
-		new StateMachineSender(args);
+
 
 	}	
 }
