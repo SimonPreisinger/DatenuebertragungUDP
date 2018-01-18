@@ -26,9 +26,11 @@ public class StateMachineSender {
     static InetAddress address = null;
     static DatagramSocket socket;
     static byte[] fileBuffer;
+    static byte[] inputBuffer = new byte[256];
 	// all states for this FSM
 	enum State {
-		SENDER_WAIT_FOR_CALL_FROM_ABOVE, SENDER_WAIT_FOR_ACK, SENDER_WAIT_FOR_PACKET, SENDER_SEND_PACKET
+		SENDER_WAIT_FOR_CALL_FROM_ABOVE, SENDER_WAIT_FOR_ACK, SENDER_WAIT_FOR_PACKET, SENDER_SEND_PACKET,
+		SENDER_WAIT_FOR_CALL_0_FROM_ABOVE, SENDER_WAIT_FOR_ACK0, SENDER_WAIT_FOR_CALL_1_FROM_ABOVE, SENDER_WAIT_FOR_ACK1
 	};
 	// all messages/conditions which can occur
 	enum Msg {
@@ -71,8 +73,6 @@ public class StateMachineSender {
 	     FileInputStream inputStream = new FileInputStream(filePath.toString());
 	     File file = filePath.toFile();       
 	     
-	     DataInputStream dataIn = new DataInputStream(inputStream);
-	     dataIn.readFully(fileBuffer = new byte[(int) file.length()]);
 	     System.out.println("JPEG_example.jpg byte size: " + fileBuffer.length + " file lenght " + file.length());
 	
 	     processMsg(Msg.snpkt);
@@ -105,19 +105,40 @@ public class StateMachineSender {
 		public State execute(Msg input) {
 			System.out.println("SndPkt");
 		    // send request		   
+			
+			//TIPPS
+			//System arraycopy
+			// inputstream.read(bytarray)
+			//Packet: Acknummer, Prüfsumme
+// max 508Byte
 
-
-	            DatagramPacket packet = new DatagramPacket(smallPacketsBuffer, smallPacketSize, address, 4445);
-	            packet = packet;
-	            smallPacketsBuffer = new byte[smallPacketSize];
-	
-	            try {
-					socket.send(packet);
-					System.out.println("sent a mini-packet");
+	         
+	   	     Path filePath = Paths.get(dateiName);		     
+		     try {
+		    	
+				FileInputStream inputStream = new FileInputStream(filePath.toString());
+				try {
+					for (int i = 0; i < inputBuffer.length ; i++){
+						inputStream.read(inputBuffer, i, 8);
+						
+						DatagramPacket packet = new DatagramPacket(inputBuffer, inputBuffer.length, address, 4445);
+						
+						try {
+							socket.send(packet);
+							System.out.println("sent a mini-packet");
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}           
+					}
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}            
+				}
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		    
 			
 

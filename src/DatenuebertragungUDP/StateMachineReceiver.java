@@ -18,7 +18,8 @@ public class StateMachineReceiver extends Thread {
     protected boolean morePackages = true;
 	// all states for this FSM
 	enum State {
-		RECEIVER_WAIT_FOR_CALL_FROM_BELOW, RECEIVER_WAIT_FOR_ACK, RECEIVER_WAIT_FOR_PACKET, RECEIVER_SEND_PACKET
+		RECEIVER_WAIT_FOR_CALL_FROM_BELOW, RECEIVER_WAIT_FOR_ACK, RECEIVER_WAIT_FOR_PACKET, RECEIVER_SEND_PACKET,
+		RECEIVER_WAIT_FOR_0_FROM_BELOW, RECEIVER_WAIT_FOR_1_FROM_BELOW
 	};
 	// all messages/conditions which can occur
 	enum Msg {
@@ -76,28 +77,8 @@ public class StateMachineReceiver extends Thread {
 		@Override
 		public State execute(Msg input) {
 			System.out.println("Receiver SendPkt");
-	        while (morePackages) {
-	            try {
-	                byte[] buf = new byte[2048];
 
-	                // receive request
-	                DatagramPacket packet = new DatagramPacket(buf, buf.length);
-	                socket.receive(packet);
-	                System.out.println("packet.getData() "+ packet.getData());
-
-
-	                //	 send the response to the client at "address" and "port"
-	                InetAddress address = packet.getAddress();
-	                int port = packet.getPort();
-	                packet = new DatagramPacket(buf, buf.length, address, port);
-	                socket.send(packet);
-	                
-	            } catch (IOException e) {
-	                e.printStackTrace();
-			morePackages = false;
-	            }
-	        }
-	        socket.close();
+	        //socket.close();
 			return State.RECEIVER_WAIT_FOR_PACKET;
 		}
 	}
@@ -108,20 +89,25 @@ public class StateMachineReceiver extends Thread {
 			System.out.println("Receiver ReadPkt");
 			 while (morePackages) {
 		            try {
-		                byte[] buf = new byte[2048];
+		                byte[] buf = new byte[128];
 
 		                // receive request
-		                DatagramPacket packet = new DatagramPacket(buf, buf.length);
+		                DatagramPacket packetIn = new DatagramPacket(buf, buf.length);
 
-		                	socket.receive(packet);
+		                	socket.receive(packetIn);
 		                	
-		                	System.out.println("packet.getData() "+ packet.getData());
+		                	System.out.println("packet.getData() "+ packetIn.getData());
+		                	String received = new String(packetIn.getData(), 0, packetIn.getLength());
+		                	//System.out.println("received address" + packetIn.getAddress());
+		                	//System.out.println("received    port" + packetIn.getPort());
+		                	//System.out.println("received  lenght" + packetIn.getLength());
+		                	System.out.println("received data: " + received);
 		                	
 		                	//	 send the response to the client at "address" and "port"
-		                	InetAddress address = packet.getAddress();
-		                	int port = packet.getPort();
-		                	packet = new DatagramPacket(buf, buf.length, address, port);
-		                	socket.send(packet);
+		                	InetAddress address = packetIn.getAddress();
+		                	int port = packetIn.getPort();
+		                	DatagramPacket packetOut = new DatagramPacket(buf, buf.length, address, port);
+		                	socket.send(packetOut);
 		                	
 		                
 		                
