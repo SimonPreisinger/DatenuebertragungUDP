@@ -15,16 +15,8 @@ import java.net.DatagramPacket;
 import DatenuebertragungUDP.StateMachineReceiver;
 import DatenuebertragungUDP.StateMachineReceiver.Msg;
 public class StateMachineSender {
-	
-	static int smallPacketSize = 2048;
-	static byte[] smallPacketsBuffer = new byte[smallPacketSize];
-    static BufferedReader in = null;
-    static String dateiName = "";
-    static InetAddress address = null;
-    static DatagramSocket socket;
-    static byte[] fileBuffer;
-    static byte[] inputBuffer = new byte[256];
-    static FileInputStream inputStream;
+
+
 	// all states for this FSM
 	enum State {
 		SENDER_WAIT_FOR_CALL_0_FROM_ABOVE, SENDER_WAIT_FOR_ACK0, SENDER_WAIT_FOR_CALL_1_FROM_ABOVE, SENDER_WAIT_FOR_ACK1
@@ -37,12 +29,8 @@ public class StateMachineSender {
 	private State currentState;
 	// 2D array defining all transitions that can occur
 	private Transition[][] transition;
-	
-	/**
-	 * constructor
-	 * @throws IOException  
-	 */
-	public StateMachineSender(String[] args) throws IOException {
+
+	public StateMachineSender() {
 		currentState = State.SENDER_WAIT_FOR_CALL_0_FROM_ABOVE;
 		// define all valid state transitions for our state machine
 		// (undefined transitions will be ignored)
@@ -56,34 +44,13 @@ public class StateMachineSender {
 		transition[State.SENDER_WAIT_FOR_ACK1.ordinal()][Msg.ack1Toack1.ordinal()] = new WAIT_FOR_ACK1();
 		transition[State.SENDER_WAIT_FOR_ACK1.ordinal()][Msg.ack1ToWait0.ordinal()] = new WAIT_FOR_CALL_0_FROM_ABOVE();
 		System.out.println("Sender constructed, current state: "+currentState);
-	    address = InetAddress.getByName(args[0]);
-	    dateiName = (args[1]);
-	    System.out.print("address = " + address + "\n");
-	    System.out.print("dateiName = " + dateiName + "\n");
+	    //address = InetAddress.getByName(args[0]);
+	    //dateiName = (args[1]);
+	    //System.out.print("address = " + address + "\n");
+	    //System.out.print("dateiName = " + dateiName + "\n");
         // get a datagram socket
-	    socket = new DatagramSocket();
+	    //socket = new DatagramSocket();
 		 // read sendFile
-	     try {
-	         FileReader reader = new FileReader(dateiName);;
-	     } catch (FileNotFoundException e) {
-	         System.err.println(dateiName + " existiert nicht");
-	     }	       	     
-	     
-	     Path filePath = Paths.get(dateiName);
-
-	     fileBuffer = Files.readAllBytes(filePath);
-
-	     File file = filePath.toFile();
-
-		inputStream = null;
-		try {
-			inputStream = new FileInputStream(filePath.toString());
-		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
-		}
-
-
-		System.out.println("JPEG_example.jpg byte size: " + fileBuffer.length + " file lenght " + file.length());
 
 	     processMsg(Msg.wait0ToAck0);
 		    
@@ -150,43 +117,5 @@ public class StateMachineSender {
 			processMsg(Msg.ack1ToWait0);
 			return  State.SENDER_WAIT_FOR_ACK1;
 		}
-	}
-
-	private void makepkt() throws IOException {
-		//TIPPS
-		//System arraycopy
-		// inputstream.read(bytarray)
-		//Packet: Acknummer, Prüfsumme
-// max 508Byte
-		byte seqNr = 0;
-		byte checksum = 0;
-		byte[] data = new byte[1024];
-		byte[] ack = new byte[]{0};
-
-
-		Path filePath = Paths.get(dateiName);
-		try {
-
-			while (inputStream.read(data, 2, 1022) != -1) {
-				DatagramPacket packet = new DatagramPacket(inputBuffer, inputBuffer.length, address, 4445);
-
-				try {
-					socket.send(packet);
-					System.out.println("sent a mini-packet");
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-
-			}
-
-
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-
 	}
 }

@@ -7,7 +7,7 @@ public class StartReceiver {
 	public static void main(String[] args) throws IOException{
 
 
-		new StateMachineReceiver().start();
+		new FileReceiver().start();
 
 
 	}	
