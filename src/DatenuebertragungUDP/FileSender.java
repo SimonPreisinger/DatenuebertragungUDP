@@ -37,22 +37,22 @@ public class FileSender extends Thread {
             FileInputStream fileInputStream = new FileInputStream(filePath.toString())) {
             stateMachineSender.processMsg(StateMachineSender.Msg.readPkt0);
             byte seqNr = 0;
-            byte checksum = 0;
-            byte[] data = new byte[1024];
+            byte outChecksum = 0;
+            byte[] outData = new byte[1024];
             byte[] ack = new byte[] {0};
             DatagramPacket ackPacket = new DatagramPacket(ack,ack.length);
-            while(fileInputStream.read(data,2,1022) != -1) {
-                data[0] = seqNr;
+            while(fileInputStream.read(outData,2,1022) != -1) {
+                outData[0] = seqNr;
 
                 for (int i = 2; i <= 1023; i++) {
-                    checksum += data[i];
+                    outChecksum += outData[i];
                 }
-                data[1] = checksum;
-                checksum = 0;
+                outData[1] = outChecksum;
+                outChecksum = 0;
 
                 while(true) {
                     try{
-                        DatagramPacket packet = new DatagramPacket(data,data.length,address,4445);
+                        DatagramPacket packet = new DatagramPacket(outData,outData.length,address,4445);
                         socket.send(packet);
                         if(seqNr == 0){
                             stateMachineSender.processMsg(StateMachineSender.Msg.sent0Pkt);

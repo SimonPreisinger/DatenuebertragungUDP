@@ -29,7 +29,7 @@ public class FileReceiver extends Thread{
             socket = new DatagramSocket(4445);
             socket.setSoTimeout(10000);
 
-            FileOutputStream fileOutputStream = new FileOutputStream("Copy.jpg");
+            FileOutputStream fileOutputStream = new FileOutputStream("Copy.rar");
             DatagramPacket inPacket = new DatagramPacket(inData , inData .length);
             while (true)
             {
