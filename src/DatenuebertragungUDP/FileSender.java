@@ -14,10 +14,12 @@ public class FileSender extends Thread {
     String filename;
     InetAddress address;
     Path filePath;
+    StateMachineSender stateMachineSender;
 
 
     public FileSender(String[] args) {
-        this.filename = args[0];
+        stateMachineSender = new StateMachineSender();
+        this.filename = args[1];
         this.filePath = Paths.get(filename);
         try {
             this.address = InetAddress.getByName(args[0]);
@@ -25,17 +27,14 @@ public class FileSender extends Thread {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
     }
 
     @Override
     public void run(){
-
-            StateMachineSender stateMachineSender = new StateMachineSender();
+            System.out.println("run FileSender");
 
             try(DatagramSocket socket = new DatagramSocket();
             FileInputStream fileInputStream = new FileInputStream(filePath.toString())) {
-
             byte seqNr = 0;
             byte checksum = 0;
             byte[] data = new byte[1024];
@@ -54,10 +53,11 @@ public class FileSender extends Thread {
                     try{
                         DatagramPacket packet = new DatagramPacket(data,data.length,address,4445);
                         socket.send(packet);
+                        stateMachineSender.processMsg(StateMachineSender.Msg.wait0ToAck0);
 
-                        if(new Random().nextInt(20) +1 == 3) { //duplicate packet
-                            socket.send(packet);
-                        }
+                        //if(new Random().nextInt(20) +1 == 3) { //duplicate packet
+                          //  socket.send(packet);
+                        //}
 
                         socket.setSoTimeout(200);
                         socket.receive(ackPacket);
