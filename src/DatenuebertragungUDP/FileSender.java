@@ -53,7 +53,12 @@ public class FileSender extends Thread {
                     try{
                         DatagramPacket packet = new DatagramPacket(data,data.length,address,4445);
                         socket.send(packet);
-                        stateMachineSender.processMsg(StateMachineSender.Msg.wait0ToAck0);
+                        if(seqNr == 0){
+                            stateMachineSender.processMsg(StateMachineSender.Msg.wait0ToAck0);
+                        }
+                        else if(seqNr == 1){
+                            stateMachineSender.processMsg(StateMachineSender.Msg.wait1ToAck1);
+                        }
 
                         //if(new Random().nextInt(20) +1 == 3) { //duplicate packet
                           //  socket.send(packet);

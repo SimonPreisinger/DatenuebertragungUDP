@@ -20,8 +20,10 @@ public class FileReceiver extends Thread{
     public void run(){
         System.out.println("Run FileReceiver");
         byte seqNr = 0;
-        byte checksum = 0;
         byte[] inData = new byte[1024];
+        byte inSeqNr = 0;
+        byte inChecksumMustBe = 0;
+        byte inChecksumCalc = 0;
         DatagramSocket socket = null;
         try {
             socket = new DatagramSocket(4445);
@@ -32,9 +34,14 @@ public class FileReceiver extends Thread{
             while (true)
             {
                 socket.receive(inPacket);
+                inSeqNr = inData[0];
+                inChecksumMustBe = inData[1];
+                for (int i = 2; i <= 1023; i++){
+                    inChecksumCalc += inData[i];
+                }
                 fileOutputStream.write(inPacket.getData());
                 inData = inPacket.getData();
-                if(inData[0] == seqNr && checksum == inData[1])
+                if(inSeqNr == seqNr && inChecksumCalc == inChecksumMustBe)
                 {
                     DatagramPacket ackPacket = new DatagramPacket(new byte[]{seqNr},1, inPacket.getAddress(), inPacket.getPort());
                     socket.send(ackPacket);
@@ -47,11 +54,11 @@ public class FileReceiver extends Thread{
                     }
                     fileOutputStream.write(inData, 2, 1022);
                     seqNr = (byte) ((seqNr + 1) % 2);
-                    checksum = 0;
+                    inChecksumCalc = 0;
                 }
                 else
                 {
-                    checksum = 0;
+                    inChecksumCalc = 0;
                     continue;
                 }
 
