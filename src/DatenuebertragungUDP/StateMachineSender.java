@@ -1,19 +1,5 @@
 package DatenuebertragungUDP;
 
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.net.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.net.DatagramPacket;
-import DatenuebertragungUDP.StateMachineReceiver;
-import DatenuebertragungUDP.StateMachineReceiver.Msg;
 public class StateMachineSender {
 
 
@@ -23,7 +9,7 @@ public class StateMachineSender {
 	};
 	// all messages/conditions which can occur
 	enum Msg {
-		wait0ToWait0 ,wait0ToAck0, ack0ToAck0, ack0ToWait1, wait1ToWait1, wait1ToAck1	, ack1Toack1, ack1ToWait0
+		readPkt0 , readPkt1,sent0Pkt, sent1Pkt, got0Ack, got1Ack, invalidAck0, invalidAck1, timeout0, timeout1
 	}
 	// current state of the FSM	
 	private State currentState;
@@ -35,14 +21,19 @@ public class StateMachineSender {
 		// define all valid state transitions for our state machine
 		// (undefined transitions will be ignored)
 		transition = new Transition[State.values().length] [Msg.values().length];
-		//transition[State.SENDER_WAIT_FOR_CALL_0_FROM_ABOVE.ordinal()] [Msg.wait0ToWait0.ordinal()] = new WAIT_FOR_CALL_0_FROM_ABOVE();
-		transition[State.SENDER_WAIT_FOR_CALL_0_FROM_ABOVE.ordinal()] [Msg.wait0ToAck0.ordinal()] = new WAIT_FOR_ACK0();
-		//transition[State.SENDER_WAIT_FOR_ACK0.ordinal()][Msg.ack0ToAck0.ordinal()] = new WAIT_FOR_ACK0();
-		transition[State.SENDER_WAIT_FOR_ACK0.ordinal()][Msg.ack0ToWait1.ordinal()] = new WAIT_FOR_CALL_1_FROM_ABOVE();
-		//transition[State.SENDER_WAIT_FOR_CALL_1_FROM_ABOVE.ordinal()] [Msg.wait1ToWait1.ordinal()] = new WAIT_FOR_CALL_1_FROM_ABOVE();
-		transition[State.SENDER_WAIT_FOR_CALL_1_FROM_ABOVE.ordinal()] [Msg.wait1ToAck1.ordinal()] = new WAIT_FOR_ACK1();
-		//transition[State.SENDER_WAIT_FOR_ACK1.ordinal()][Msg.ack1Toack1.ordinal()] = new WAIT_FOR_ACK1();
-		transition[State.SENDER_WAIT_FOR_ACK1.ordinal()][Msg.ack1ToWait0.ordinal()] = new WAIT_FOR_CALL_0_FROM_ABOVE();
+		transition[State.SENDER_WAIT_FOR_CALL_0_FROM_ABOVE.ordinal()] [Msg.sent0Pkt.ordinal()] = new WAIT_FOR_ACK0();
+		transition[State.SENDER_WAIT_FOR_CALL_0_FROM_ABOVE.ordinal()] [Msg.readPkt0.ordinal()] = new WAIT_FOR_CALL_0_FROM_ABOVE();
+
+		transition[State.SENDER_WAIT_FOR_ACK0.ordinal()][Msg.got0Ack.ordinal()] = new WAIT_FOR_CALL_1_FROM_ABOVE();
+		transition[State.SENDER_WAIT_FOR_ACK0.ordinal()][Msg.invalidAck0.ordinal()] = new WAIT_FOR_ACK0();
+		transition[State.SENDER_WAIT_FOR_ACK0.ordinal()][Msg.timeout0.ordinal()] = new WAIT_FOR_ACK0();
+
+		transition[State.SENDER_WAIT_FOR_CALL_1_FROM_ABOVE.ordinal()] [Msg.sent1Pkt.ordinal()] = new WAIT_FOR_ACK1();
+		transition[State.SENDER_WAIT_FOR_CALL_1_FROM_ABOVE.ordinal()] [Msg.readPkt1.ordinal()] = new WAIT_FOR_CALL_1_FROM_ABOVE();
+
+		transition[State.SENDER_WAIT_FOR_ACK1.ordinal()][Msg.got1Ack.ordinal()] = new WAIT_FOR_CALL_0_FROM_ABOVE();
+		transition[State.SENDER_WAIT_FOR_ACK1.ordinal()][Msg.invalidAck1.ordinal()] = new WAIT_FOR_ACK1();
+		transition[State.SENDER_WAIT_FOR_ACK1.ordinal()][Msg.timeout1.ordinal()] = new WAIT_FOR_ACK0();
 		System.out.println("Sender constructed, current state: "+currentState);
 	}
 	
@@ -55,7 +46,7 @@ public class StateMachineSender {
 		if(trans != null){
 			currentState = trans.execute(input);
 		}
-		System.out.println("SENDER Received "+input+" in state "+currentState);
+		System.out.println("SENDER received "+input+" in state "+currentState);
 	}
 	
 	/**
@@ -70,14 +61,12 @@ public class StateMachineSender {
 	class WAIT_FOR_CALL_0_FROM_ABOVE extends Transition {
 		@Override
 		public State execute(Msg input) {
-			System.out.println("SENDER_WAIT_FOR_CALL_0_FROM_ABOVE");
 			return State.SENDER_WAIT_FOR_CALL_0_FROM_ABOVE;
 		}
 	}
 	class WAIT_FOR_ACK0 extends Transition {
 		@Override
 		public  State execute(Msg input){
-			System.out.println("SENDER_WAIT_FOR_ACK0");
 			return State.SENDER_WAIT_FOR_ACK0;
 		}
 	}
@@ -85,7 +74,6 @@ public class StateMachineSender {
 	class WAIT_FOR_CALL_1_FROM_ABOVE extends  Transition {
 		@Override
 		public  State execute(Msg input){
-			System.out.println("SENDER_WAIT_FOR_CALL_1_FROM_ABOVE");
 			return  State.SENDER_WAIT_FOR_CALL_1_FROM_ABOVE;
 		}
 	}
@@ -93,7 +81,6 @@ public class StateMachineSender {
 	class WAIT_FOR_ACK1 extends  Transition {
 		@Override
 		public  State execute(Msg input){
-			System.out.println("SENDER_WAIT_FOR_ACK1");
 			return  State.SENDER_WAIT_FOR_ACK1;
 		}
 	}

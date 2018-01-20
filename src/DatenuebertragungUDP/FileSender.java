@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Random;
 
+
 public class FileSender extends Thread {
     String filename;
     InetAddress address;
@@ -31,10 +32,10 @@ public class FileSender extends Thread {
 
     @Override
     public void run(){
-            System.out.println("run FileSender");
-
-            try(DatagramSocket socket = new DatagramSocket();
+        System.out.println("run FileSender");
+        try(DatagramSocket socket = new DatagramSocket();
             FileInputStream fileInputStream = new FileInputStream(filePath.toString())) {
+            stateMachineSender.processMsg(StateMachineSender.Msg.readPkt0);
             byte seqNr = 0;
             byte checksum = 0;
             byte[] data = new byte[1024];
@@ -54,10 +55,10 @@ public class FileSender extends Thread {
                         DatagramPacket packet = new DatagramPacket(data,data.length,address,4445);
                         socket.send(packet);
                         if(seqNr == 0){
-                            stateMachineSender.processMsg(StateMachineSender.Msg.wait0ToAck0);
+                            stateMachineSender.processMsg(StateMachineSender.Msg.sent0Pkt);
                         }
                         else if(seqNr == 1){
-                            stateMachineSender.processMsg(StateMachineSender.Msg.wait1ToAck1);
+                            stateMachineSender.processMsg(StateMachineSender.Msg.sent1Pkt);
                         }
 
                         //if(new Random().nextInt(20) +1 == 3) { //duplicate packet
@@ -66,10 +67,14 @@ public class FileSender extends Thread {
 
                         socket.setSoTimeout(200);
                         socket.receive(ackPacket);
-                        if(ackPacket.getData()[0] != seqNr) {
+                        if(ackPacket.getData()[0] != seqNr && seqNr == 1) {
+                            stateMachineSender.processMsg(StateMachineSender.Msg.got0Ack);
                             continue;
                         }
-
+                        else if(ackPacket.getData()[0] != seqNr && seqNr == 0) {
+                            stateMachineSender.processMsg(StateMachineSender.Msg.got1Ack);
+                            continue;
+                        }
                         else {
                             seqNr =  (byte) ((seqNr + 1) % 2);
                             break;

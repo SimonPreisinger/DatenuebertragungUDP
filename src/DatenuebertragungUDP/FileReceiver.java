@@ -19,38 +19,38 @@ public class FileReceiver extends Thread{
     @Override
     public void run(){
         System.out.println("Run FileReceiver");
-        byte seqNr = 0;
-        byte[] inData = new byte[1024];
-        byte inSeqNr = 0;
-        byte inChecksumMustBe = 0;
-        byte inChecksumCalc = 0;
-        DatagramSocket socket = null;
         try {
+            byte seqNr = 0;
+            byte[] inData = new byte[1024];
+            byte inSeqNr = 0;
+            byte inChecksumMustBe = 0;
+            byte inChecksumCalc = 0;
+            DatagramSocket socket = null;
             socket = new DatagramSocket(4445);
-            socket.setSoTimeout(5000);
+            socket.setSoTimeout(10000);
 
             FileOutputStream fileOutputStream = new FileOutputStream("Copy.jpg");
             DatagramPacket inPacket = new DatagramPacket(inData , inData .length);
             while (true)
             {
                 socket.receive(inPacket);
+                inData = inPacket.getData();
                 inSeqNr = inData[0];
                 inChecksumMustBe = inData[1];
                 for (int i = 2; i <= 1023; i++){
                     inChecksumCalc += inData[i];
                 }
                 fileOutputStream.write(inPacket.getData());
-                inData = inPacket.getData();
                 if(inSeqNr == seqNr && inChecksumCalc == inChecksumMustBe)
                 {
                     DatagramPacket ackPacket = new DatagramPacket(new byte[]{seqNr},1, inPacket.getAddress(), inPacket.getPort());
                     socket.send(ackPacket);
-                    if(inData[0] == 0){
-                        stateMachineReceiver.processMsg(StateMachineReceiver.Msg.wait0ToWait1);
+                    if(inSeqNr == 0){
+                        stateMachineReceiver.processMsg(StateMachineReceiver.Msg.send0Ack);
                     }
-                    else if(inData[0] == 1)
+                    else if(inSeqNr == 1)
                     {
-                        stateMachineReceiver.processMsg(StateMachineReceiver.Msg.wait1ToWait0);
+                        stateMachineReceiver.processMsg(StateMachineReceiver.Msg.send1Ack);
                     }
                     fileOutputStream.write(inData, 2, 1022);
                     seqNr = (byte) ((seqNr + 1) % 2);
@@ -63,6 +63,11 @@ public class FileReceiver extends Thread{
                 }
 
             }
+        }
+        catch (SocketTimeoutException e)
+        {
+            System.out.println("sollte fertig sein");
+            e.printStackTrace();
         }
         catch (FileNotFoundException e) {
             e.printStackTrace();

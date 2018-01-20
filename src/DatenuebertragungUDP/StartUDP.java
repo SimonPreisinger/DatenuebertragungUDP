@@ -8,7 +8,6 @@ public class StartUDP {
 		FileReceiver fileReceiver = new FileReceiver();
 		FileSender fileSender = new FileSender(args);
 
-
 		fileReceiver.start();
 		fileSender.start();
 

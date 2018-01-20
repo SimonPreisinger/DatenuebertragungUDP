@@ -19,7 +19,7 @@ public class StateMachineReceiver {
 	};
 	// all messages/conditions which can occur
 	enum Msg {
-		wait0ToWait1, wait1ToWait0 	}
+		send0Ack, send1Ack 	}
 	// current state of the FSM	
 	private State currentState;
 	// 2D array defining all transitions that can occur
@@ -34,8 +34,8 @@ public class StateMachineReceiver {
 		// define all valid state transitions for our state machine
 		// (undefined transitions will be ignored)
 		transition = new Transition[State.values().length] [Msg.values().length];
-		transition[State.RECEIVER_WAIT_FOR_0_FROM_BELOW.ordinal()][Msg.wait0ToWait1.ordinal()] = new WAIT_FOR_1_FROM_BELOW();
-		transition[State.RECEIVER_WAIT_FOR_1_FROM_BELOW.ordinal()] [Msg.wait1ToWait0.ordinal()] = new WAIT_FOR_0_FROM_BELOW();
+		transition[State.RECEIVER_WAIT_FOR_0_FROM_BELOW.ordinal()][Msg.send0Ack.ordinal()] = new WAIT_FOR_1_FROM_BELOW();
+		transition[State.RECEIVER_WAIT_FOR_1_FROM_BELOW.ordinal()] [Msg.send1Ack.ordinal()] = new WAIT_FOR_0_FROM_BELOW();
 		System.out.println("Receiver constructed, current state: "+currentState);
 	}
 	
@@ -48,7 +48,7 @@ public class StateMachineReceiver {
 		if(trans != null){
 			currentState = trans.execute(input);
 		}
-		System.out.println("RECEIVER Received "+input+" in state "+currentState);
+		System.out.println("RECEIVER received "+input+" in state "+currentState);
 	}
 	
 	/**
@@ -63,7 +63,6 @@ public class StateMachineReceiver {
 	class WAIT_FOR_0_FROM_BELOW extends Transition {
 		@Override
 		public State execute(Msg input) {
-			System.out.println("RECEIVER_WAIT_FOR_0_FROM_BELOW");
 			return State.RECEIVER_WAIT_FOR_0_FROM_BELOW;
 		}
 	}
@@ -71,7 +70,6 @@ public class StateMachineReceiver {
 	class WAIT_FOR_1_FROM_BELOW extends Transition {
 		@Override
 		public State execute(Msg input) {
-			System.out.println("RECEIVER_WAIT_FOR_1_FROM_BELOW");
 			return State.RECEIVER_WAIT_FOR_1_FROM_BELOW;
 		}
 	}
