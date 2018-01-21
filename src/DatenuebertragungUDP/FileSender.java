@@ -1,14 +1,12 @@
 package DatenuebertragungUDP;
 
-
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 public class FileSender extends Thread {
@@ -52,8 +50,12 @@ public class FileSender extends Thread {
                         outData[1] = outChecksum;
                         outChecksum = 0;
                         DatagramPacket packet = new DatagramPacket(outData,outData.length,address,4445);
-                        System.out.println("seqNrSent " + seqNr);
-                        socket.send(packet);
+
+                        float sendLoss = ThreadLocalRandom.current().nextFloat();
+
+                        if( sendLoss < 0.9){ // Simulate SendPacketLoss
+                            socket.send(packet);
+                        }
                         if(seqNr == 0){
                             stateMachineSender.processMsg(StateMachineSender.Msg.sent0Pkt);
                         }
@@ -61,14 +63,9 @@ public class FileSender extends Thread {
                             stateMachineSender.processMsg(StateMachineSender.Msg.sent1Pkt);
                         }
 
-                        //if(new Random().nextInt(20) +1 == 3) { //duplicate packet
-                          //  socket.send(packet);
-                        //}
-
                         socket.setSoTimeout(1000);
                         socket.receive(ackPacket);
 
-                        System.out.println("S got ackPacket " + ackPacket.getData()[0]);
                         // got correct ACK packet
                         if(ackPacket.getData()[0] == seqNr) {
                             if(ackPacket.getData()[0] == 0){
@@ -80,11 +77,6 @@ public class FileSender extends Thread {
                             seqNr =  (byte) ((seqNr + 1) % 2);
                             break;
                         }
-                        else if(ackPacket.getData()[0] != seqNr)
-                        {
-
-                        }
-
                     }
                     catch (SocketTimeoutException e) { // Receiver sent no ACK or got no Packet so send again
                         if(seqNr == 0){
@@ -109,5 +101,4 @@ public class FileSender extends Thread {
             e.printStackTrace();
         }
     }
-
 }

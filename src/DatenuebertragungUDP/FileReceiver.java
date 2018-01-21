@@ -12,7 +12,6 @@ public class FileReceiver extends Thread{
     StateMachineReceiver stateMachineReceiver;
 
     public FileReceiver() {
-
         stateMachineReceiver = new StateMachineReceiver();
     }
 
@@ -29,7 +28,7 @@ public class FileReceiver extends Thread{
             socket = new DatagramSocket(4445);
             socket.setSoTimeout(10000);
 
-            FileOutputStream fileOutputStream = new FileOutputStream("Copy.rar");
+            FileOutputStream fileOutputStream = new FileOutputStream("CopyJPEGExample.jpg");
             DatagramPacket inPacket = new DatagramPacket(inData , inData .length);
             while (true)
             {
@@ -40,10 +39,9 @@ public class FileReceiver extends Thread{
                 for (int i = 2; i <= 1023; i++){
                     inChecksumCalc += inData[i];
                 }
-                DatagramPacket ackPacket = new DatagramPacket(new byte[]{seqNr},1, inPacket.getAddress(), inPacket.getPort());
+                DatagramPacket ackPacket;
                 if(inSeqNr == seqNr && inChecksumCalc == inChecksumMustBe) //correct seqNr
                 {
-                    System.out.println("R got inSeqNR: " + inSeqNr);
                     ackPacket = new DatagramPacket(new byte[]{seqNr},1, inPacket.getAddress(), inPacket.getPort());
                     socket.send(ackPacket);
                     if(inSeqNr == 0){
@@ -67,12 +65,11 @@ public class FileReceiver extends Thread{
                     inChecksumCalc = 0;
                     continue;
                 }
-
             }
         }
         catch (SocketTimeoutException e)
         {
-            System.out.println("Datei fertig");
+            System.out.println("Datei uebertragen");
             e.printStackTrace();
         }
         catch (FileNotFoundException e) {

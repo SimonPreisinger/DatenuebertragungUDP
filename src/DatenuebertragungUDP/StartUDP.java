@@ -10,8 +10,6 @@ public class StartUDP {
 
 		fileReceiver.start();
 		fileSender.start();
-
-
 	}	
 }
 

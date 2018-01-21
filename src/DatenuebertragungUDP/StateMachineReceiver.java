@@ -1,20 +1,9 @@
 package DatenuebertragungUDP;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-
-import DatenuebertragungUDP.StateMachineSender.Msg;
-
 public class StateMachineReceiver {
 
 	// all states for this FSM
 	enum State {
-
 		RECEIVER_WAIT_FOR_0_FROM_BELOW, RECEIVER_WAIT_FOR_1_FROM_BELOW
 	};
 	// all messages/conditions which can occur
@@ -29,7 +18,6 @@ public class StateMachineReceiver {
 	 * constructor
 	 */
     public StateMachineReceiver() {
-
 		currentState = State.RECEIVER_WAIT_FOR_0_FROM_BELOW;
 		// define all valid state transitions for our state machine
 		// (undefined transitions will be ignored)

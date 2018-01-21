@@ -6,8 +6,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd348726-2c58-4fe3-9181-49d0bc8fae77" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/7_2_Paketformat.docx" afterPath="$PROJECT_DIR$/7_2_Paketformat.docx" />
+      <change beforePath="$PROJECT_DIR$/JPEG_example.jpg" afterPath="$PROJECT_DIR$/JPEG_example.jpg" />
+      <change beforePath="$PROJECT_DIR$/JPEG_example2.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/datei2.txt" afterPath="" />
       <change beforePath="$PROJECT_DIR$/src/DatenuebertragungUDP/FileReceiver.java" afterPath="$PROJECT_DIR$/src/DatenuebertragungUDP/FileReceiver.java" />
       <change beforePath="$PROJECT_DIR$/src/DatenuebertragungUDP/FileSender.java" afterPath="$PROJECT_DIR$/src/DatenuebertragungUDP/FileSender.java" />
+      <change beforePath="$PROJECT_DIR$/src/DatenuebertragungUDP/StartUDP.java" afterPath="$PROJECT_DIR$/src/DatenuebertragungUDP/StartUDP.java" />
+      <change beforePath="$PROJECT_DIR$/src/DatenuebertragungUDP/StateMachineReceiver.java" afterPath="$PROJECT_DIR$/src/DatenuebertragungUDP/StateMachineReceiver.java" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,41 +26,41 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.40731853">
+    <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-          <file leaf-file-name="StartUDP.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="StartUDP.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/DatenuebertragungUDP/StartUDP.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="289">
-                  <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+                <state relative-caret-position="255">
+                  <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="FileReceiver.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="FileReceiver.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/DatenuebertragungUDP/FileReceiver.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="735">
-                  <caret line="76" column="9" lean-forward="true" selection-start-line="76" selection-start-column="9" selection-end-line="76" selection-end-column="9" />
+                <state relative-caret-position="119">
+                  <caret line="34" column="41" lean-forward="true" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
                   <folding>
                     <element signature="imports" expanded="true" />
+                    <element signature="e#384#385#0" expanded="true" />
+                    <element signature="e#449#450#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="StateMachineReceiver.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/DatenuebertragungUDP/StateMachineReceiver.java">
+          <file leaf-file-name="StateMachineSender.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/DatenuebertragungUDP/StateMachineSender.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="223">
-                  <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+                <state relative-caret-position="510">
+                  <caret line="30" column="115" lean-forward="true" selection-start-line="30" selection-start-column="115" selection-end-line="30" selection-end-column="115" />
                   <folding>
-                    <element signature="e#2024#2025#0" expanded="true" />
-                    <element signature="e#2076#2077#0" expanded="true" />
-                    <element signature="e#2179#2180#0" expanded="true" />
-                    <element signature="e#2231#2232#0" expanded="true" />
+                    <element signature="e#2866#2867#0" expanded="true" />
+                    <element signature="e#2908#2909#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -61,54 +69,55 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="FileSender.java" pinned="false" current-in-tab="false">
-            <entry file="file://$USER_HOME$/Documents/Netzwerke/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll/src/FileSender.java">
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="525">
+          <file leaf-file-name="FileSender.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/DatenuebertragungUDP/FileSender.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="782">
-                  <caret line="56" column="46" lean-forward="false" selection-start-line="56" selection-start-column="46" selection-end-line="56" selection-end-column="46" />
+                <state relative-caret-position="437">
+                  <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="FileSender.java" pinned="false" current-in-tab="false">
+            <entry file="file://$USER_HOME$/Documents/NetzwerkI/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll/src/FileSender.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="952">
+                  <caret line="66" column="30" lean-forward="false" selection-start-line="66" selection-start-column="30" selection-end-line="66" selection-end-column="30" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
           <file leaf-file-name="FileReceiver.java" pinned="false" current-in-tab="false">
-            <entry file="file://$USER_HOME$/Documents/Netzwerke/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll/src/FileReceiver.java">
+            <entry file="file://$USER_HOME$/Documents/NetzwerkI/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll/src/FileReceiver.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
-                  <caret line="22" column="30" lean-forward="false" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+                <state relative-caret-position="816">
+                  <caret line="55" column="12" lean-forward="false" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="StateMachineSender.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/DatenuebertragungUDP/StateMachineSender.java">
+          <file leaf-file-name="FsmWoman.java" pinned="false" current-in-tab="false">
+            <entry file="file://$USER_HOME$/Documents/NetzwerkI/FsmWoman.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="223">
-                  <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#2718#2719#0" expanded="true" />
-                    <element signature="e#2773#2774#0" expanded="true" />
-                    <element signature="e#2866#2867#0" expanded="true" />
-                    <element signature="e#2908#2909#0" expanded="true" />
-                    <element signature="e#3016#3017#0" expanded="true" />
-                    <element signature="e#3072#3073#0" expanded="true" />
-                    <element signature="e#3167#3168#0" expanded="true" />
-                    <element signature="e#3210#3211#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="0">
+                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                  <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="FileSender.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/DatenuebertragungUDP/FileSender.java">
+          <file leaf-file-name="StateMachineReceiver.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/DatenuebertragungUDP/StateMachineReceiver.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="362">
-                  <caret line="70" column="34" lean-forward="true" selection-start-line="70" selection-start-column="34" selection-end-line="70" selection-end-column="34" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
+                <state relative-caret-position="170">
+                  <caret line="19" column="35" lean-forward="false" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -161,11 +170,11 @@
       <list>
         <option value="$PROJECT_DIR$/src/DatenuebertragungUDP/StartSender.java" />
         <option value="$PROJECT_DIR$/src/DatenuebertragungUDP/StartReceiver.java" />
-        <option value="$PROJECT_DIR$/src/DatenuebertragungUDP/StateMachineReceiver.java" />
         <option value="$PROJECT_DIR$/src/DatenuebertragungUDP/StateMachineSender.java" />
         <option value="$PROJECT_DIR$/src/DatenuebertragungUDP/StartUDP.java" />
-        <option value="$PROJECT_DIR$/src/DatenuebertragungUDP/FileSender.java" />
         <option value="$PROJECT_DIR$/src/DatenuebertragungUDP/FileReceiver.java" />
+        <option value="$PROJECT_DIR$/src/DatenuebertragungUDP/StateMachineReceiver.java" />
+        <option value="$PROJECT_DIR$/src/DatenuebertragungUDP/FileSender.java" />
       </list>
     </option>
   </component>
@@ -182,10 +191,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="1824" />
+    <option name="y" value="-28" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -219,7 +228,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -242,15 +251,18 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.pathVariables" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
     <property name="last_opened_file_path" value="$USER_HOME$/Documents/NetzwerkI/FsmWoman.java" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -314,7 +326,7 @@
       </extension>
       <option name="MAIN_CLASS_NAME" value="DatenuebertragungUDP.StartUDP" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="SimonXPS15 3.Abgabe.rar" />
+      <option name="PROGRAM_PARAMETERS" value="SimonDesktop JPEG_example.jpg" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -433,44 +445,45 @@
       <workItem from="1516485121828" duration="11084000" />
       <workItem from="1516527379068" duration="2189000" />
       <workItem from="1516538003745" duration="5474000" />
+      <workItem from="1516563862576" duration="3220000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48579000" />
+    <option name="totallyTimeSpent" value="52828000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="3456" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.4988372" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32944834" sideWeight="0.49615" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24498416" sideWeight="0.5484375" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24475524" sideWeight="0.54971546" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24498416" sideWeight="0.4515625" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24475524" sideWeight="0.45028457" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13177083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13168605" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Learn" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39915523" sideWeight="0.4640625" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3986014" sideWeight="0.46267158" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Learn" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -481,7 +494,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="55" />
+      <option name="time" value="56" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -500,14 +513,8 @@
         <state relative-caret-position="918">
           <caret line="54" column="4" lean-forward="true" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
           <folding>
-            <element signature="e#2718#2719#0" expanded="true" />
-            <element signature="e#2773#2774#0" expanded="true" />
             <element signature="e#2866#2867#0" expanded="true" />
             <element signature="e#2908#2909#0" expanded="true" />
-            <element signature="e#3016#3017#0" expanded="true" />
-            <element signature="e#3072#3073#0" expanded="true" />
-            <element signature="e#3167#3168#0" expanded="true" />
-            <element signature="e#3210#3211#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -522,29 +529,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Documents/Netzwerke/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/Netzwerke/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll/src/FileSender.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="43" column="32" lean-forward="true" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/Netzwerke/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll/src/FileReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Documents/Netzwerke/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll/src/Main.java" />
+    <entry file="file://$USER_HOME$/Documents/Netzwerke/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll/src/FileSender.java" />
+    <entry file="file://$USER_HOME$/Documents/Netzwerke/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll/src/FileReceiver.java" />
     <entry file="file://$PROJECT_DIR$/src/DatenuebertragungUDP/StartUDP.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -558,14 +545,8 @@
         <state relative-caret-position="510">
           <caret line="43" column="95" lean-forward="true" selection-start-line="43" selection-start-column="95" selection-end-line="43" selection-end-column="95" />
           <folding>
-            <element signature="e#2718#2719#0" expanded="true" />
-            <element signature="e#2773#2774#0" expanded="true" />
             <element signature="e#2866#2867#0" expanded="true" />
             <element signature="e#2908#2909#0" expanded="true" />
-            <element signature="e#3016#3017#0" expanded="true" />
-            <element signature="e#3072#3073#0" expanded="true" />
-            <element signature="e#3167#3168#0" expanded="true" />
-            <element signature="e#3210#3211#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -586,6 +567,8 @@
           <caret line="73" column="31" lean-forward="true" selection-start-line="73" selection-start-column="31" selection-end-line="73" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#384#385#0" expanded="true" />
+            <element signature="e#449#450#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -594,12 +577,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#2024#2025#0" expanded="true" />
-            <element signature="e#2076#2077#0" expanded="true" />
-            <element signature="e#2179#2180#0" expanded="true" />
-            <element signature="e#2231#2232#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -625,14 +603,8 @@
         <state relative-caret-position="663">
           <caret line="52" column="25" lean-forward="false" selection-start-line="52" selection-start-column="25" selection-end-line="52" selection-end-column="25" />
           <folding>
-            <element signature="e#2718#2719#0" expanded="true" />
-            <element signature="e#2773#2774#0" expanded="true" />
             <element signature="e#2866#2867#0" expanded="true" />
             <element signature="e#2908#2909#0" expanded="true" />
-            <element signature="e#3016#3017#0" expanded="true" />
-            <element signature="e#3072#3073#0" expanded="true" />
-            <element signature="e#3167#3168#0" expanded="true" />
-            <element signature="e#3210#3211#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -653,6 +625,8 @@
           <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#384#385#0" expanded="true" />
+            <element signature="e#449#450#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -662,12 +636,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="31" column="7" lean-forward="false" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
-          <folding>
-            <element signature="e#2024#2025#0" expanded="true" />
-            <element signature="e#2076#2077#0" expanded="true" />
-            <element signature="e#2179#2180#0" expanded="true" />
-            <element signature="e#2231#2232#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -694,14 +663,8 @@
         <state relative-caret-position="663">
           <caret line="52" column="25" lean-forward="false" selection-start-line="52" selection-start-column="25" selection-end-line="52" selection-end-column="25" />
           <folding>
-            <element signature="e#2718#2719#0" expanded="true" />
-            <element signature="e#2773#2774#0" expanded="true" />
             <element signature="e#2866#2867#0" expanded="true" />
             <element signature="e#2908#2909#0" expanded="true" />
-            <element signature="e#3016#3017#0" expanded="true" />
-            <element signature="e#3072#3073#0" expanded="true" />
-            <element signature="e#3167#3168#0" expanded="true" />
-            <element signature="e#3210#3211#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -722,6 +685,8 @@
           <caret line="24" column="13" lean-forward="true" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#384#385#0" expanded="true" />
+            <element signature="e#449#450#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -731,12 +696,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="31" column="7" lean-forward="true" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
-          <folding>
-            <element signature="e#2024#2025#0" expanded="true" />
-            <element signature="e#2076#2077#0" expanded="true" />
-            <element signature="e#2179#2180#0" expanded="true" />
-            <element signature="e#2231#2232#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -753,12 +713,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="775">
           <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding>
-            <element signature="e#2024#2025#0" expanded="true" />
-            <element signature="e#2076#2077#0" expanded="true" />
-            <element signature="e#2179#2180#0" expanded="true" />
-            <element signature="e#2231#2232#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -777,14 +732,8 @@
         <state relative-caret-position="2375">
           <caret line="111" column="35" lean-forward="false" selection-start-line="111" selection-start-column="35" selection-end-line="111" selection-end-column="35" />
           <folding>
-            <element signature="e#2718#2719#0" expanded="true" />
-            <element signature="e#2773#2774#0" expanded="true" />
             <element signature="e#2866#2867#0" expanded="true" />
             <element signature="e#2908#2909#0" expanded="true" />
-            <element signature="e#3016#3017#0" expanded="true" />
-            <element signature="e#3072#3073#0" expanded="true" />
-            <element signature="e#3167#3168#0" expanded="true" />
-            <element signature="e#3210#3211#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -800,93 +749,85 @@
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Documents/NetzwerkI/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll/src/Main.java" />
-    <entry file="file://$USER_HOME$/Documents/NetzwerkI/FsmWoman.java" />
-    <entry file="file://$USER_HOME$/Documents/NetzwerkI/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll/src/FileSender.java" />
-    <entry file="file://$USER_HOME$/Documents/NetzwerkI/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll/src/FileReceiver.java" />
-    <entry file="file://$USER_HOME$/Documents/Netzwerke/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll/src/Main.java">
+    <entry file="file://$USER_HOME$/Documents/NetzwerkI/FsmWoman.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Documents/NetzwerkI/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll/src/FileSender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="952">
+          <caret line="66" column="30" lean-forward="false" selection-start-line="66" selection-start-column="30" selection-end-line="66" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/NetzwerkI/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll/src/FileReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="55" column="12" lean-forward="false" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/Netzwerke/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll/src/Main.java" />
     <entry file="file://$PROJECT_DIR$/JPEG_example2.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Documents/Netzwerke/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll/src/FileSender.java" />
+    <entry file="file://$USER_HOME$/Documents/Netzwerke/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll/src/FileReceiver.java" />
     <entry file="file://$PROJECT_DIR$/Copy.jpg" />
-    <entry file="file://$USER_HOME$/Documents/Netzwerke/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll/src/FileSender.java">
+    <entry file="file://$PROJECT_DIR$/src/DatenuebertragungUDP/StateMachineSender.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="56" column="46" lean-forward="false" selection-start-line="56" selection-start-column="46" selection-end-line="56" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/Netzwerke/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll 2/Zuverlässiges Protokoll/src/FileReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="22" column="30" lean-forward="false" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
-          <folding />
+        <state relative-caret-position="510">
+          <caret line="30" column="115" lean-forward="true" selection-start-line="30" selection-start-column="115" selection-end-line="30" selection-end-column="115" />
+          <folding>
+            <element signature="e#2866#2867#0" expanded="true" />
+            <element signature="e#2908#2909#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DatenuebertragungUDP/StateMachineReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding>
-            <element signature="e#2024#2025#0" expanded="true" />
-            <element signature="e#2076#2077#0" expanded="true" />
-            <element signature="e#2179#2180#0" expanded="true" />
-            <element signature="e#2231#2232#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DatenuebertragungUDP/StateMachineSender.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding>
-            <element signature="e#2718#2719#0" expanded="true" />
-            <element signature="e#2773#2774#0" expanded="true" />
-            <element signature="e#2866#2867#0" expanded="true" />
-            <element signature="e#2908#2909#0" expanded="true" />
-            <element signature="e#3016#3017#0" expanded="true" />
-            <element signature="e#3072#3073#0" expanded="true" />
-            <element signature="e#3167#3168#0" expanded="true" />
-            <element signature="e#3210#3211#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DatenuebertragungUDP/StartUDP.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state relative-caret-position="170">
+          <caret line="19" column="35" lean-forward="false" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DatenuebertragungUDP/FileReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="76" column="9" lean-forward="true" selection-start-line="76" selection-start-column="9" selection-end-line="76" selection-end-column="9" />
+        <state relative-caret-position="119">
+          <caret line="34" column="41" lean-forward="true" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#384#385#0" expanded="true" />
+            <element signature="e#449#450#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DatenuebertragungUDP/FileSender.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="70" column="34" lean-forward="true" selection-start-line="70" selection-start-column="34" selection-end-line="70" selection-end-column="34" />
+        <state relative-caret-position="437">
+          <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DatenuebertragungUDP/StartUDP.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -904,9 +845,80 @@
           </splitter-proportions>
         </settings>
       </state>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>9.0</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>DatenuebertragungUDP</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
       <state key="ProjectJDKs.UI">
         <settings>
           <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
           <splitter-proportions>
             <option name="proportions">
               <list>
