@@ -40,20 +40,26 @@ public class FileReceiver extends Thread{
                 for (int i = 2; i <= 1023; i++){
                     inChecksumCalc += inData[i];
                 }
-                fileOutputStream.write(inPacket.getData());
-                if(inSeqNr == seqNr && inChecksumCalc == inChecksumMustBe)
+                DatagramPacket ackPacket = new DatagramPacket(new byte[]{seqNr},1, inPacket.getAddress(), inPacket.getPort());
+                if(inSeqNr == seqNr && inChecksumCalc == inChecksumMustBe) //correct seqNr
                 {
-                    DatagramPacket ackPacket = new DatagramPacket(new byte[]{seqNr},1, inPacket.getAddress(), inPacket.getPort());
+                    System.out.println("R got inSeqNR: " + inSeqNr);
+                    ackPacket = new DatagramPacket(new byte[]{seqNr},1, inPacket.getAddress(), inPacket.getPort());
                     socket.send(ackPacket);
                     if(inSeqNr == 0){
                         stateMachineReceiver.processMsg(StateMachineReceiver.Msg.send0Ack);
                     }
-                    else if(inSeqNr == 1)
-                    {
+                    else if(inSeqNr == 1){
                         stateMachineReceiver.processMsg(StateMachineReceiver.Msg.send1Ack);
                     }
                     fileOutputStream.write(inData, 2, 1022);
-                    seqNr = (byte) ((seqNr + 1) % 2);
+                    seqNr =  (byte) ((seqNr + 1) % 2);
+                    inChecksumCalc = 0;
+                }
+                else if(inSeqNr != seqNr && inChecksumCalc == inChecksumMustBe) //Sender got no ACK, send ACK again
+                {
+                    ackPacket = new DatagramPacket(new byte[]{seqNr},1, inPacket.getAddress(), inPacket.getPort());
+                    socket.send(ackPacket);
                     inChecksumCalc = 0;
                 }
                 else
