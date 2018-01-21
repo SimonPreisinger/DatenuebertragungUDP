@@ -72,7 +72,7 @@ public class FileReceiver extends Thread{
         }
         catch (SocketTimeoutException e)
         {
-            System.out.println("sollte fertig sein");
+            System.out.println("Datei fertig");
             e.printStackTrace();
         }
         catch (FileNotFoundException e) {

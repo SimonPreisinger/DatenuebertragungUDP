@@ -65,7 +65,7 @@ public class FileSender extends Thread {
                           //  socket.send(packet);
                         //}
 
-                        socket.setSoTimeout(200);
+                        socket.setSoTimeout(1000);
                         socket.receive(ackPacket);
 
                         System.out.println("S got ackPacket " + ackPacket.getData()[0]);
@@ -78,7 +78,7 @@ public class FileSender extends Thread {
                                 stateMachineSender.processMsg(StateMachineSender.Msg.got1Ack);
                             }
                             seqNr =  (byte) ((seqNr + 1) % 2);
-                            continue;
+                            break;
                         }
                         else if(ackPacket.getData()[0] != seqNr)
                         {
@@ -87,6 +87,12 @@ public class FileSender extends Thread {
 
                     }
                     catch (SocketTimeoutException e) { // Receiver sent no ACK or got no Packet so send again
+                        if(seqNr == 0){
+                            stateMachineSender.processMsg(StateMachineSender.Msg.timeout0);
+                        }
+                        else if(seqNr == 1){
+                            stateMachineSender.processMsg(StateMachineSender.Msg.timeout1);
+                        }
                         continue;
                     }
                 }
