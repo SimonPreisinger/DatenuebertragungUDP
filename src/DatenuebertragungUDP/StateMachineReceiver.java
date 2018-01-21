@@ -8,7 +8,7 @@ public class StateMachineReceiver {
 	};
 	// all messages/conditions which can occur
 	enum Msg {
-		send0Ack, send1Ack 	}
+		send0Ack, send1Ack, gotInvalidPkt 	}
 	// current state of the FSM	
 	private State currentState;
 	// 2D array defining all transitions that can occur
@@ -24,6 +24,12 @@ public class StateMachineReceiver {
 		transition = new Transition[State.values().length] [Msg.values().length];
 		transition[State.RECEIVER_WAIT_FOR_0_FROM_BELOW.ordinal()][Msg.send0Ack.ordinal()] = new WAIT_FOR_1_FROM_BELOW();
 		transition[State.RECEIVER_WAIT_FOR_1_FROM_BELOW.ordinal()] [Msg.send1Ack.ordinal()] = new WAIT_FOR_0_FROM_BELOW();
+
+		transition[State.RECEIVER_WAIT_FOR_0_FROM_BELOW.ordinal()][Msg.gotInvalidPkt.ordinal()] = new WAIT_FOR_1_FROM_BELOW();
+		transition[State.RECEIVER_WAIT_FOR_1_FROM_BELOW.ordinal()] [Msg.gotInvalidPkt.ordinal()] = new WAIT_FOR_0_FROM_BELOW();
+
+
+
 		System.out.println("Receiver constructed, current state: "+currentState);
 	}
 	

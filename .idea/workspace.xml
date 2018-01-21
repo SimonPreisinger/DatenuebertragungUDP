@@ -6,15 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd348726-2c58-4fe3-9181-49d0bc8fae77" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/7_2_Paketformat.docx" afterPath="$PROJECT_DIR$/7_2_Paketformat.docx" />
-      <change beforePath="$PROJECT_DIR$/JPEG_example.jpg" afterPath="$PROJECT_DIR$/JPEG_example.jpg" />
-      <change beforePath="$PROJECT_DIR$/JPEG_example2.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/datei2.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/DatenuebertragungUDP/FileReceiver.java" afterPath="$PROJECT_DIR$/src/DatenuebertragungUDP/FileReceiver.java" />
-      <change beforePath="$PROJECT_DIR$/src/DatenuebertragungUDP/FileSender.java" afterPath="$PROJECT_DIR$/src/DatenuebertragungUDP/FileSender.java" />
-      <change beforePath="$PROJECT_DIR$/src/DatenuebertragungUDP/StartUDP.java" afterPath="$PROJECT_DIR$/src/DatenuebertragungUDP/StartUDP.java" />
       <change beforePath="$PROJECT_DIR$/src/DatenuebertragungUDP/StateMachineReceiver.java" afterPath="$PROJECT_DIR$/src/DatenuebertragungUDP/StateMachineReceiver.java" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -56,8 +48,8 @@
           <file leaf-file-name="StateMachineSender.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/DatenuebertragungUDP/StateMachineSender.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="510">
-                  <caret line="30" column="115" lean-forward="true" selection-start-line="30" selection-start-column="115" selection-end-line="30" selection-end-column="115" />
+                <state relative-caret-position="612">
+                  <caret line="36" column="59" lean-forward="true" selection-start-line="36" selection-start-column="59" selection-end-line="36" selection-end-column="59" />
                   <folding>
                     <element signature="e#2866#2867#0" expanded="true" />
                     <element signature="e#2908#2909#0" expanded="true" />
@@ -70,11 +62,11 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="525">
-          <file leaf-file-name="FileSender.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="FileSender.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/DatenuebertragungUDP/FileSender.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="437">
-                  <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+                <state relative-caret-position="97">
+                  <caret line="36" column="27" lean-forward="true" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -112,11 +104,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="StateMachineReceiver.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="StateMachineReceiver.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/DatenuebertragungUDP/StateMachineReceiver.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="170">
-                  <caret line="19" column="35" lean-forward="false" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
+                <state relative-caret-position="425">
+                  <caret line="25" column="122" lean-forward="false" selection-start-line="25" selection-start-column="122" selection-end-line="25" selection-end-column="122" />
                   <folding />
                 </state>
               </provider>
@@ -171,10 +163,10 @@
         <option value="$PROJECT_DIR$/src/DatenuebertragungUDP/StartSender.java" />
         <option value="$PROJECT_DIR$/src/DatenuebertragungUDP/StartReceiver.java" />
         <option value="$PROJECT_DIR$/src/DatenuebertragungUDP/StateMachineSender.java" />
-        <option value="$PROJECT_DIR$/src/DatenuebertragungUDP/StartUDP.java" />
         <option value="$PROJECT_DIR$/src/DatenuebertragungUDP/FileReceiver.java" />
-        <option value="$PROJECT_DIR$/src/DatenuebertragungUDP/StateMachineReceiver.java" />
         <option value="$PROJECT_DIR$/src/DatenuebertragungUDP/FileSender.java" />
+        <option value="$PROJECT_DIR$/src/DatenuebertragungUDP/StartUDP.java" />
+        <option value="$PROJECT_DIR$/src/DatenuebertragungUDP/StateMachineReceiver.java" />
       </list>
     </option>
   </component>
@@ -445,12 +437,12 @@
       <workItem from="1516485121828" duration="11084000" />
       <workItem from="1516527379068" duration="2189000" />
       <workItem from="1516538003745" duration="5474000" />
-      <workItem from="1516563862576" duration="3220000" />
+      <workItem from="1516563862576" duration="5474000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52828000" />
+    <option name="totallyTimeSpent" value="55082000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="3456" height="1416" extended-state="6" />
@@ -784,20 +776,12 @@
     <entry file="file://$PROJECT_DIR$/Copy.jpg" />
     <entry file="file://$PROJECT_DIR$/src/DatenuebertragungUDP/StateMachineSender.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="115" lean-forward="true" selection-start-line="30" selection-start-column="115" selection-end-line="30" selection-end-column="115" />
+        <state relative-caret-position="612">
+          <caret line="36" column="59" lean-forward="true" selection-start-line="36" selection-start-column="59" selection-end-line="36" selection-end-column="59" />
           <folding>
             <element signature="e#2866#2867#0" expanded="true" />
             <element signature="e#2908#2909#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DatenuebertragungUDP/StateMachineReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="19" column="35" lean-forward="false" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -815,11 +799,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DatenuebertragungUDP/FileSender.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+        <state relative-caret-position="97">
+          <caret line="36" column="27" lean-forward="true" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DatenuebertragungUDP/StateMachineReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="122" lean-forward="false" selection-start-line="25" selection-start-column="122" selection-end-line="25" selection-end-column="122" />
+          <folding />
         </state>
       </provider>
     </entry>
